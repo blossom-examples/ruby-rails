@@ -1,3 +1,3 @@
 # Ruby on Rails Tutorial Deploy on Blossom
 
-This is a sample Ruby on Rails app show how to deploy to [Blossom](https://blossom-cloud).
+A ready-to-deploy Rails app to get you started quickly on [Blossom](https://blossom-cloud.com).
