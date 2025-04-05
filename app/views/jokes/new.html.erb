@@ -1,0 +1,36 @@
+<div class="w-full max-w-4xl mx-auto">
+  <h1 class="text-3xl font-bold text-gray-800 mb-8">Add New Joke</h1>
+
+  <%= form_with(model: @joke, class: "bg-white rounded-lg shadow-md p-6") do |form| %>
+    <% if @joke.errors.any? %>
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <h2 class="font-bold"><%= pluralize(@joke.errors.count, "error") %> prohibited this joke from being saved:</h2>
+        <ul class="list-disc list-inside">
+          <% @joke.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-4">
+      <%= form.label :content, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", rows: 5 %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :author, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :author, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :category, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.select :category, ["general", "dad jokes", "knock-knock", "one-liners", "puns"], {}, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= form.submit "Create Joke", class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      <%= link_to "Back to Jokes", jokes_path, class: "text-blue-500 hover:text-blue-700" %>
+    </div>
+  <% end %>
+</div>
