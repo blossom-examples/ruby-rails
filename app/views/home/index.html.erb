@@ -1,64 +1,58 @@
-<div class="w-full max-w-4xl mx-auto text-center">
-  <header class="mb-12">
-    <h1 class="text-4xl font-bold text-gray-800 mb-4">Ruby on Rails Demo</h1>
-    <p class="text-xl text-gray-600 mb-4">A modern web application ready for your next big idea</p>
-    <a href="https://blossom-cloud.com" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
-      <span>Deploy on Blossom</span>
+<div class="w-full max-w-4xl mx-auto">
+  <!-- Hero Section -->
+  <div class="text-center mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg shadow-sm">
+    <h1 class="text-4xl font-bold text-gray-800 mb-2">Let Your Apps Blossom</h1>
+    <p class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">Deploy any application to your own servers. Save time and money with Blossom's simple deployment platform.</p>
+    <div class="flex justify-center gap-4 mb-6">
+      <a href="https://docs.blossom-cloud.com" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        📖 Documentation
+      </a>
+      <a href="https://www.blossom-cloud.com/quickstarts" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        🚀 Quickstarts
+      </a>
+    </div>
+    <a href="https://blossom-cloud.com" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+      Learn more about Blossom
       <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
       </svg>
     </a>
-  </header>
+  </div>
 
-  <div class="grid md:grid-cols-2 gap-8 mb-12">
-    <!-- Quick Start Card -->
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <h2 class="text-2xl font-semibold mb-4">Quick Start</h2>
-      <div class="text-left space-y-4">
-        <p class="text-gray-600">Your Rails application includes:</p>
-        <ul class="list-disc list-inside space-y-2 text-gray-600">
-          <li>Modern Tailwind CSS styling</li>
-          <li>Turbo & Stimulus for interactivity</li>
-          <li>Asset pipeline configuration</li>
-          <li>Ready for production deployment</li>
-        </ul>
-      </div>
-    </div>
+  <!-- Demo Section -->
+  <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Rails Demo Features</h2>
+    <p class="text-gray-600 mb-6 text-center">This simple <a href="https://rubyonrails.org/" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium">Ruby on Rails</a> app demonstrates how easy it is to deploy Ruby applications on <a href="https://blossom-cloud.com" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium">Blossom</a>.</p>
 
-    <!-- Resources Card -->
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <h2 class="text-2xl font-semibold mb-4">Next Steps</h2>
-      <div class="text-left space-y-4">
-        <p class="text-gray-600">Helpful resources to get started:</p>
-        <ul class="list-disc list-inside space-y-2 text-gray-600">
-          <li><a href="https://guides.rubyonrails.org" target="_blank" class="text-blue-600 hover:text-blue-800">Rails Guides</a></li>
-          <li><a href="https://tailwindcss.com" target="_blank" class="text-blue-600 hover:text-blue-800">Tailwind CSS Docs</a></li>
-          <li><a href="https://stimulus.hotwired.dev" target="_blank" class="text-blue-600 hover:text-blue-800">Stimulus.js</a></li>
-          <li><a href="https://turbo.hotwired.dev" target="_blank" class="text-blue-600 hover:text-blue-800">Turbo</a></li>
-        </ul>
-      </div>
+    <!-- Random Joke Section -->
+    <div class="bg-gray-50 rounded-lg p-6">
+      <h3 class="text-xl font-semibold mb-6">Random Joke</h3>
+
+      <% if Joke.any? %>
+        <% @joke = Joke.random %>
+        <div class="mb-6">
+          <p class="text-lg text-gray-800 mb-4"><%= @joke.content %></p>
+          <p class="text-sm text-gray-500">By <%= @joke.author %></p>
+          <p class="text-xs text-gray-400 mt-1">Category: <%= @joke.category %></p>
+        </div>
+
+        <div class="flex justify-center space-x-4">
+          <%= link_to "Get Another Joke", random_joke_path, class: "bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded transition-colors" %>
+          <%= link_to "View All Jokes", jokes_path, class: "bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded transition-colors" %>
+        </div>
+      <% else %>
+        <p class="text-gray-600 mb-6">No jokes yet. Be the first to add one!</p>
+        <%= link_to "Add a Joke", new_joke_path, class: "bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded transition-colors" %>
+      <% end %>
     </div>
   </div>
 
-  <!-- Random Joke Section -->
-  <div class="bg-white rounded-lg shadow-md p-8 mb-8">
-    <h2 class="text-2xl font-semibold mb-6">Random Joke</h2>
-
-    <% if Joke.any? %>
-      <% @joke = Joke.random %>
-      <div class="mb-6">
-        <p class="text-lg text-gray-800 mb-4"><%= @joke.content %></p>
-        <p class="text-sm text-gray-500">By <%= @joke.author %></p>
-        <p class="text-xs text-gray-400 mt-1">Category: <%= @joke.category %></p>
-      </div>
-
-      <div class="flex justify-center space-x-4">
-        <%= link_to "Get Another Joke", random_joke_path, class: "bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors" %>
-        <%= link_to "View All Jokes", jokes_path, class: "bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded transition-colors" %>
-      </div>
-    <% else %>
-      <p class="text-gray-600 mb-6">No jokes yet. Be the first to add one!</p>
-      <%= link_to "Add a Joke", new_joke_path, class: "bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors" %>
-    <% end %>
+  <!-- Cost Savings Section -->
+  <div class="bg-white rounded-lg shadow-md p-8 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Discover Your Savings 💵</h2>
+    <p class="text-gray-600 mb-6">See how much you can save with the cost calculator. Compare deployment costs and optimize your budget.</p>
+    <a href="https://www.blossom-cloud.com/pricing/calculator" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+      💰 Calculate Savings
+    </a>
   </div>
 </div>
